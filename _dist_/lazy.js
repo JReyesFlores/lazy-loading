@@ -7,8 +7,7 @@ const accion = (entry) => {
   const container = entry.target;
   const imagen = container.querySelector('img');
   const url = imagen.dataset.src;
-  imagen.src = url;
-  //console.log(url);
+  imagen.src = url; 
 
   // des registra la imagen
   observer.unobserve(container);
