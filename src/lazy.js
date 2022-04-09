@@ -3,6 +3,7 @@ const isIntersecting = (entry) => {
 };
 
 const functionIntersection = (entries, observer) => {
+  //console.log(typeof entries.filter);
   entries.filter(isIntersecting).forEach((entry) => {
     const container = entry.target;
     //console.log(container);
