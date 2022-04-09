@@ -1,23 +1,34 @@
 const isIntersecting = (entry) => {
-  //se pueden validar cosas adicionales
   return entry.isIntersecting;
 };
 
-const accion = (entry) => {
-  const container = entry.target;
-  const imagen = container.querySelector('img');
-  const url = imagen.dataset.src;
-  imagen.src = url; 
+const functionIntersection = (entries, observer) => {
+  entries.filter(isIntersecting).forEach((entry) => {
+    const container = entry.target;
+    //console.log(container);
+    const imagen = container.querySelector('img');
+    console.log(imagen);
+    const url = imagen.dataset.src;
+    imagen.src = url;
 
-  // des registra la imagen
-  observer.unobserve(container);
+    loadedImages++;
+    printLog();
+
+    observer.unobserve(container);
+  });
 };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.filter(isIntersecting).forEach(accion);
-});
+const options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 1.0,
+};
+
+// Declaramos la web API de IntersectionObserver
+const observer = new IntersectionObserver(functionIntersection, options);
 
 export const registerImage = (Image) => {
   // Registra la webAPI de IntersectionObserver
+  console.log('Registra al API');
   observer.observe(Image);
 };
