@@ -14,6 +14,7 @@ const functionIntersection = (entries, observer) => {
     loadedImages++;
     printLog();
 
+    console.log('Unregister web API');
     observer.unobserve(container);
   });
 };
@@ -29,6 +30,6 @@ const observer = new IntersectionObserver(functionIntersection, options);
 
 export const registerImage = (Image) => {
   // Registra la webAPI de IntersectionObserver
-  console.log('Registra al API');
+  console.log('Register web API');
   observer.observe(Image);
 };
